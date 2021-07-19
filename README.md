@@ -1,1 +1,1 @@
-# rsschool-cv
+https://GosuJmen.github.io/rsschool-cv/cv
