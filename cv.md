@@ -20,4 +20,4 @@
 ## An example of my code:
 `console.log('Hello, World!');`
 
-###### This CV will be updated! Soon? ######
+###### This CV will be updated! Soon?! ######
