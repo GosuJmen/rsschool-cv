@@ -1,1 +1,1 @@
-https://GosuJmen.github.io/rsschool-cv/cv
+https://GosuJmen.github.io/rsschool-cv/
