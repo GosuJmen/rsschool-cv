@@ -4,12 +4,12 @@ body {
     padding: 20px 20px 20px 20px;
     width: 1000px;
     height: 1000px;
-    background-color: #FFFEF2;
+    background-color: #F8F8F8;
 }
 .border-solid {
     padding: 20px 20px 20px 20px;
-    background-color: #F8F8F8;
-  }
+    background-color: #FDFCFC;
+}
   
 @keyframes color-change {
     14.3% {
@@ -33,8 +33,11 @@ body {
     100% {
       color: purple;
     }    
-  }
+}
 
 .animation-text {
     animation: color-change 30s infinite;
-  }
+}
+.year {
+    font: 26pt Verdana, sans-serif;
+}
