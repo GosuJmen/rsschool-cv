@@ -76,11 +76,54 @@ html,body {
 }
 
 .wrapper {
-  main-height: 100%;
+  min-height: 100%;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
-.bounding-container {
-  max-width: 1200;
+.bounding_container {
+  max-width: 1000px;
   margin: 0px auto;
+}
+
+.header {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 50;
+}
+
+.header_container {
+  display: flex;
+  min-height: 100px;
+  align-items: center;
+}
+
+.menu {
+  margin: 0px 0px 0px 100;
+}
+
+.menu_list {
+  flex-wrap: wrap;
+  display: flex;
+}
+
+.menu_item {
+}
+
+.menu_item:not(:last-child) {
+  margin: 0px 21px 0px 0px;
+}
+
+.menu_link {
+  color: black;
+  line-height: 170%;
+}
+
+.main {
+  flex: 1 1 auto;
+}
+.footer {
 }
