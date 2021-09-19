@@ -1,4 +1,4 @@
-body {
+/* body {
     font-family: Verdana, sans-serif;
     font-size: 12pt;
     padding: 20px 20px 20px 20px;
@@ -6,6 +6,7 @@ body {
     height: 1000px;
     background-color: #F8F8F8;
 }
+
 .border-solid {
     padding: 20px 20px 20px 20px;
     background-color: #FDFCFC;
@@ -43,4 +44,43 @@ body {
 }
 .gstu {
     font: 18pt Verdana, sans-serif;
+} */
+
+/* ОБНУЛЕНИЕ */
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin-top: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+}
+ul,ol,li {
+  list-style: none;
+}
+img {
+  vertical-align: top;
+}
+h1,h2,h3,h4,h5,h6 {
+  font-weight: inherit; 
+  font-size: inherit;
+}
+html,body {
+  height: 100%;
+  line-height: 1;
+  font-size: 16px;
+  font-family: Nunito;
+}
+
+.wrapper {
+  main-height: 100%;
+  overflow: hidden;
+}
+
+.bounding-container {
+  max-width: 1200;
+  margin: 0px auto;
 }
