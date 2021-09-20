@@ -225,16 +225,18 @@ html,body {
 }
 
 .title {
+  background-color: rgba(18, 109, 97, 0.753);
   font-size: 3em;
   font-weight: 800;
-  background: rgba(74, 130, 134, 0.7);
+  color: beige;
 }
 
-.information_item {
+.regular_item {
   font-size: 20px;
 }
 
 li img {
+  margin: 2px 0px 2px 0px;
   position: relative;
   vertical-align: middle;
 }
@@ -243,5 +245,23 @@ li img {
   padding-left: 25px;
 }
 
-.footer {
+code {
+  color: aliceblue;
+  background-color: rgba(18, 109, 97, 0.753);
+  
+}
+
+footer {
+  background-color: rgba(18, 109, 97, 0.753);
+}
+
+.footer_items {
+  display: flex;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+}
+
+footer a {
+  margin: 20px 20px 20px 100px;
 }
