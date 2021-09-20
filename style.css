@@ -72,8 +72,9 @@ html,body {
   height: 100%;
   line-height: 1;
   font-size: 16px;
-  font-family: Nunito;
+  font-family: Roboto;
 }
+/* ------------------------ */
 
 .wrapper {
   min-height: 100%;
@@ -82,10 +83,27 @@ html,body {
   flex-direction: column;
 }
 
-.bounding_container {
-  max-width: 1000px;
+._bounding_container {
+  max-width: 1300px;
   margin: 0px auto;
 }
+
+/* ------------------------ */
+
+._bgd {
+  position: relative;
+}
+
+._bgd img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+}
+
+/* -----------HEADER------------- */
 
 .header {
   position: absolute;
@@ -102,7 +120,7 @@ html,body {
 }
 
 .menu {
-  margin: 0px 0px 0px 100;
+  margin: 0px 0px 0px 30px;
 }
 
 .menu_list {
@@ -110,7 +128,12 @@ html,body {
   display: flex;
 }
 
-.menu_item {
+@media (max-width: 479px) {
+  .menu_list {
+    flex-wrap: wrap;
+    display: list-item;
+    margin: 0px 0px 0px 20px; 
+  }
 }
 
 .menu_item:not(:last-child) {
@@ -118,12 +141,83 @@ html,body {
 }
 
 .menu_link {
-  color: black;
+  font-weight: 800;
+  color: white;
   line-height: 170%;
+  background-color: rgba(235, 222, 222, 0.2);
+  
 }
+
+/* -----------HEADER END------------- */
 
 .main {
   flex: 1 1 auto;
 }
+
+.my_photo {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.my_photo img {
+  object-position: bottom;
+}
+
+@media (max-width: 479px) {
+  .my_photo img {
+    object-position: right;
+  }
+}
+
+.name {
+  padding: 120px 0px 100px 20px;
+  position: relative;
+  z-index: 2;
+  color: white;
+  font-size: 5em;
+  font-weight: 800;
+}
+
+@media (max-width: 479px) {
+  .name {
+    font-size: 3em;
+  }
+}
+
+.contacts {
+  position: relative;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 3;
+}
+
+.contacts_container {
+  display: flex;
+  min-height: 100px;
+  align-items: left;
+}
+
+.contacts_list {
+  flex-wrap: wrap;
+  display: flex;
+}
+
+.contact_item {
+  margin: 20px 20px 20px 100px;
+  background-color: rgba(235, 222, 222, 0.2);
+}
+
+.information {
+  position: relative;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 3;
+}
+
 .footer {
 }
