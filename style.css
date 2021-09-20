@@ -73,6 +73,7 @@ html,body {
   line-height: 1;
   font-size: 16px;
   font-family: Roboto;
+  scroll-behavior: smooth;
 }
 /* ------------------------ */
 
@@ -130,9 +131,7 @@ html,body {
 
 /* @media (max-width: 479px) {
   .menu_list {
-    flex-wrap: wrap;
-    display: list-item;
-    margin: 0px 0px 0px 20px; 
+
   }
 } */
 
@@ -144,8 +143,7 @@ html,body {
   font-weight: 800;
   color: white;
   line-height: 170%;
-  background-color: rgba(235, 222, 222, 0.2);
-  
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
 }
 
 /* -----------HEADER END------------- */
@@ -162,6 +160,7 @@ html,body {
   height: 100%;
   top: 0;
   left: 0;
+  max-height: 600px;
 }
 
 .my_photo img {
@@ -183,6 +182,7 @@ html,body {
   color: white;
   font-size: 5em;
   font-weight: 800;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
 }
 
 @media (max-width: 479px) {
@@ -213,7 +213,6 @@ html,body {
 
 .contact_item {
   margin: 20px 20px 20px 100px;
-  background-color: rgba(235, 222, 222, 0.2);
 }
 
 .information {
@@ -247,8 +246,16 @@ li img {
 
 code {
   color: aliceblue;
-  background-color: rgba(18, 109, 97, 0.753);
-  
+  background-color: rgba(18, 109, 97, 0.753); 
+}
+
+.project {
+  border-radius: 4px;
+}
+
+.project_img {
+  box-shadow: 0 0 5px;
+  margin: 0px 0px 20px 20px;
 }
 
 footer {
@@ -264,4 +271,11 @@ footer {
 
 footer a {
   margin: 20px 20px 20px 100px;
+}
+
+.code_example {
+  color: black;
+  flex-wrap: wrap;
+  display: list-item;
+  margin: 0px 0px 0px 20px;
 }
