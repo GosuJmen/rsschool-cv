@@ -1,5 +1,34 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    align-content: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.answer-block {
+    display: flex;
+    justify-content: space-around;
+}
+
+.answer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 50px;
+    border: solid 2px;
+    border-radius: 5px;
+    border-color: black;
+}
+
 .question {
-  width: 40px;
-  height: 40px;
-  background-color: black;
+    align-self: center;
+    width: 40px;
+    height: 40px;
+    background: url(./sound.png) no-repeat;
+    background-size: contain;
 }
