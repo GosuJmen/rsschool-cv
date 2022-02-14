@@ -1,34 +1,99 @@
 html, body {
-    height: 100%;
+  height: 100%;
 }
 
 body {
-    display: flex;
-    align-content: center;
-    justify-content: space-around;
-    flex-direction: column;
+  display: flex;
+  align-content: center;
+  justify-content: space-around;
+  flex-direction: column;
 }
 
 .answer-block {
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 }
 
 .answer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 150px;
-    height: 50px;
-    border: solid 2px;
-    border-radius: 5px;
-    border-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 50px;
+  border: solid 2px;
+  border-radius: 5px;
+  border-color: black;
+  color: black;
+  background-color: whitesmoke;
+}
+
+.answer:hover {
+  background-color: black;
+  color: whitesmoke;
 }
 
 .question {
-    align-self: center;
-    width: 40px;
-    height: 40px;
-    background: url(./sound.png) no-repeat;
-    background-size: contain;
+  align-self: center;
+  width: 40px;
+  height: 40px;
+  background: url(./sound.png) no-repeat;
+  background-size: contain;
+}
+
+.result {
+  align-self: center;
+}
+
+.button {
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 50px;
+  border: solid 2px;
+  border-radius: 5px;
+  border-color: black;
+  color: black;
+  background-color: whitesmoke;
+  cursor: pointer;
+}
+
+.resultTable {
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr;
+  width: 100%;
+  margin: 3px 10px 3px 10px;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.correct, .correct:hover {
+  animation: correct 0.5s;
+}
+ 
+.incorrect, .incorrect:hover {
+  animation: incorrect 0.5s;
+}
+
+.plus {
+  width: 15px;
+  background: center / contain no-repeat url(./plus+.png);
+}
+
+.minus {
+  width: 15px;
+  background: center / contain no-repeat url(./minus-.png);
+}
+
+@keyframes correct {
+  0% {background-color: green;}
+  100% {background-color: green;}
+}
+
+@keyframes incorrect {
+  0% {background-color: red;}
+  100% {background-color: red;}
 }

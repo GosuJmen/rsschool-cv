@@ -1,10 +1,15 @@
-
-const possibleAnswers = document.querySelectorAll('.answer');
-const dataUrl = 'https://gosujmen-learnwords.herokuapp.com/words?page=0&group=0';
+let page = 0;
+let group = 0;
 const url = 'https://gosujmen-learnwords.herokuapp.com/';
+const dataUrl = `${url}words?page=${page}&group=${group}`;
+
+const ansBlock = document.querySelector('.answer-block');
+const possibleAnswers = document.querySelectorAll('.answer');
 const audioButton = document.querySelector('.question');
+const startButton = document.querySelector('.button');
+const resultBlock = document.querySelector('.result')
+
 const data = getData(dataUrl);
-console.log(data)
 
 function getData(dataUrl) {
   let b = [];
@@ -16,54 +21,99 @@ function getData(dataUrl) {
   return b;
 }
 
-
-
 //функция установки вопроса
 function setQuestion(url, sound) {
-    let questionUrl = `${url}${sound}`;
-    let audio = new Audio(questionUrl);
-    audioButton.addEventListener('click', () =>
-    {
-        audio.play();
-        console.log('click');
-    })
+  let questionUrl = `${url}${sound}`;
+  let audio = new Audio(questionUrl);
+  audio.play();
 }
 
-function getRandomAnswers(correctAnswer, answers) {
-    let arr = [];
-    arr.push(correctAnswer)
-    while(arr.length < 4) {
-        let ind = Math.floor(Math.random() * data.length);
-        if(!arr.includes(data[ind].word)) arr.push(data[ind].word); 
-    }
-    return arr
-}
 
-//функция генерации четырех случайных ответов
-function getRandAnsNum(possibleAnswers, data) {
-  let arr = [];
-  while(arr.length < possibleAnswers.length)
-  {
-    let ind = Math.floor(Math.random() * data.length) + 1;
-    if(arr.indexOf(ind) === -1) arr.push(ind);
+
+//фунция которая тасует ответы
+function shuffleAnswers(answers) {
+  for (let i = answers.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * i)
+    const temp = answers[i]
+    answers[i] = answers[j]
+    answers[j] = temp
   }
-  return arr
+  return answers;
+}
+
+//получаем массив с четырьмя ответами и тасуем его
+function getRandomAnswers(correctAnswer, answers) {
+  let arr = [];
+  arr.push(correctAnswer)
+  while(arr.length < 4) {
+      let ind = Math.floor(Math.random() * answers.length);
+      if(!arr.includes(answers[ind].word)) arr.push(answers[ind].word); 
+  }
+  return shuffleAnswers(arr)
 }
 
 //функция установки четырех случайных ответов
-function setRandAns(possibleAnswers, data) {
-  let arr = getRandAnsNum(possibleAnswers, data);
-  possibleAnswers.forEach((elem, index) => elem.textContent = data[arr[index]].word)
+function setRandAns(correctAnswer, data) {
+  let arr = getRandomAnswers(correctAnswer, data)
+  possibleAnswers.forEach((elem, index) => elem.textContent = arr[index])
 }
 
-function startGame(url, possibleAnswers, data) {
-    let count = 0
-    let correctAnswer = data[count].word
-    setRandAns(possibleAnswers, data)
-    setQuestion(url, data[count].audio)
-    possibleAnswers.addEventListener('click', (click) => {
-        
+function result(ar) {
+  ansBlock.classList.toggle('hidden')
+  ar.map(({correct, user}) =>{
+    correct === user
+    ? resultBlock.innerHTML += `<div class="resultTable"><div>Correct answer: ${correct}</div><div>You answer: ${user}</div><div class="plus"></div>`
+    : resultBlock.innerHTML += `<div class="resultTable"><div>Correct answer: ${correct}</div><div>You answer: ${user}</div><div class="minus"></div>`
+
+    
+  })
+}
+
+function game(ind, data, url) {
+  let correctAnswer = data[ind].word
+  let sound = data[ind].audio
+  setQuestion(url, sound)
+  setRandAns(correctAnswer, data)
+  return correctAnswer
+}
+
+function testStart(dataUrl) {
+  ansBlock.classList.toggle('hidden')
+  fetch(dataUrl)
+  .then((response) => {
+  return response.json();
+  })
+  .then((data) => {
+    let ind = 0
+    let res = []
+    let correctAnswer = game(ind, data, url)
+    audioButton.addEventListener('click', () =>
+    {
+      let questionUrl = `${url}${data[ind].audio}`;
+      audio = new Audio(questionUrl);
+      audio.play();
+      console.log('click');
     })
+    ansBlock.addEventListener('click', (event) => {
+      if (event.target.matches('.answer')) {
+        res.push({correct: correctAnswer, user: event.target.textContent})
+        if (event.target.textContent !== correctAnswer) {
+          event.target.classList.toggle('incorrect');
+          ind++;
+          console.log(correctAnswer, event.target.textContent)
+          ind < data.length ? correctAnswer = game(ind, data, url) : result(res);
+        } else {
+          event.target.classList.toggle('correct');
+          ind++
+          console.log(correctAnswer, event.target.textContent)
+          ind < data.length ? correctAnswer = game(ind, data, url) : result(res);
+        }
+      }
+    })
+  })
 }
 
-
+startButton.addEventListener('click', () => {
+  testStart(dataUrl);
+  startButton.classList.toggle('hidden')
+})
