@@ -5,22 +5,29 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./styles.css">
-  <link rel="stylesheet" href="./wstyles.css">
   <title>Audiocall</title>
 </head>
 <body>
   <div class="wrapper">
     <div class="reset hidden"></div>
-    <div class="question"></div>
+    <div class="topSection">
+      <div class="timer"></div>
+      <div class="score"></div>
+    </div>
+    <div class="question">
+      <div class="correctSound"></div>
+      <div class="questionNotT"></div>
+      <div class="questionT"></div>
+    </div>
     <div class="result hidden"></div>
     <div class="answer-block hidden">
-      <div class="answer"></div>
-      <div class="answer"></div>
-      <div class="answer"></div>
-      <div class="answer"></div>
+      <div class="unCorrect">Неверно!</div>
+      <div class="correct">Верно!</div>
     </div>
+
     <div class="button">Start!</div>
   </div>
+
 </body>
   <script src="./index.js"></script>
 </html>

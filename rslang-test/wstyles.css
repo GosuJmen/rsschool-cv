@@ -1,0 +1,21 @@
+.words {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.wor_d {
+  margin: 5px 5px 5px 5px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  border: solid 1px blue;
+  border-radius: 5px;
+  box-shadow: 10px 5px 5px gray;
+}
+
+.image {
+  width: 100px;
+  height: 100px;
+  background-size: contain;
+}

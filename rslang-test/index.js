@@ -1,13 +1,15 @@
 let page = 0;
 let group = 0;
 const url = 'https://gosujmen-learnwords.herokuapp.com/';
-const dataUrl = `${url}words?page=${page}&group=${group}`;
+let dataUrl = `${url}words?page=${page}&group=${group}`;
 
 const ansBlock = document.querySelector('.answer-block');
 const possibleAnswers = document.querySelectorAll('.answer');
 const audioButton = document.querySelector('.question');
 const startButton = document.querySelector('.button');
 const resultBlock = document.querySelector('.result')
+const resetBtn = document.querySelector('.reset');
+const gameReset = document.querySelector('body');
 
 const data = getData(dataUrl);
 
@@ -59,13 +61,12 @@ function setRandAns(correctAnswer, data) {
 }
 
 function result(ar) {
-  ansBlock.classList.toggle('hidden')
+  ansBlock.classList.toggle('hidden');
+  resultBlock.classList.toggle('hidden');
   ar.map(({correct, user}) =>{
     correct === user
-    ? resultBlock.innerHTML += `<div class="resultTable"><div>Correct answer: ${correct}</div><div>You answer: ${user}</div><div class="plus"></div>`
-    : resultBlock.innerHTML += `<div class="resultTable"><div>Correct answer: ${correct}</div><div>You answer: ${user}</div><div class="minus"></div>`
-
-    
+    ? resultBlock.innerHTML += `<div class="resultTable"><div>${correct}</div><div>${user}</div><div class="plus"></div>`
+    : resultBlock.innerHTML += `<div class="resultTable"><div>${correct}</div><div>${user}</div><div class="minus"></div>`
   })
 }
 
@@ -79,6 +80,7 @@ function game(ind, data, url) {
 
 function testStart(dataUrl) {
   ansBlock.classList.toggle('hidden')
+  resultBlock.innerHTML = '';
   fetch(dataUrl)
   .then((response) => {
   return response.json();
@@ -99,11 +101,13 @@ function testStart(dataUrl) {
         res.push({correct: correctAnswer, user: event.target.textContent})
         if (event.target.textContent !== correctAnswer) {
           event.target.classList.toggle('incorrect');
+          setTimeout(() => event.target.classList.toggle('incorrect'), 400)
           ind++;
           console.log(correctAnswer, event.target.textContent)
           ind < data.length ? correctAnswer = game(ind, data, url) : result(res);
         } else {
           event.target.classList.toggle('correct');
+          setTimeout(() => event.target.classList.toggle('correct'), 400)
           ind++
           console.log(correctAnswer, event.target.textContent)
           ind < data.length ? correctAnswer = game(ind, data, url) : result(res);
@@ -116,4 +120,9 @@ function testStart(dataUrl) {
 startButton.addEventListener('click', () => {
   testStart(dataUrl);
   startButton.classList.toggle('hidden')
+  resetBtn.classList.toggle('hidden')
+})
+
+resetBtn.addEventListener('click', () => {
+  document.location.reload();
 })
